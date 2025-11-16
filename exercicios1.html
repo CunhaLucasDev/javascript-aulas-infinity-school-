@@ -1,0 +1,55 @@
+//Ex03. Faça um programa que calcule a média de 2 notas de um aluno, e mostre
+sua situação de acordo com a média: - Se maior ou igual a 6: APROVADO - Se menor
+que 4: REPROVADO - Se estiver entre 4 e 6: RECUPERAÇÃO//
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>exercicios1</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        // Função que pede um número e valida a entrada.
+        // Retorna um Number válido (0-10) ou null se o usuário cancelar.
+        function getNumber(message) {
+          while (true) {
+            const input = prompt(message);
+            if (input === null) return null; // usuário cancelou
+            // aceita vírgula como separador decimal
+            const normalized = input.replace(",", ".").trim();
+            const value = Number(normalized);
+            if (Number.isNaN(value)) {
+              alert("Entrada inválida. Por favor, digite um número válido.");
+            } else if (value < 0 || value > 10) {
+              alert("A nota deve estar entre 0 e 10. Tente novamente.");
+            } else {
+              return value;
+            }
+          }
+        }
+        const nota1 = getNumber("Digite a primeira nota:");
+        if (nota1 === null) return; // interrompe se o usuário cancelar
+
+        const nota2 = getNumber("Digite a segunda nota:");
+        if (nota2 === null) return;
+
+        const media = (nota1 + nota2) / 2;
+        let situacao = "";
+
+        if (media >= 6) {
+          situacao = "APROVADO";
+        } else if (media < 4) {
+          situacao = "REPROVADO";
+        } else {
+          situacao = "RECUPERAÇÃO";
+        }
+
+        alert(
+          `A média das notas ${nota1} e ${nota2} é ${media}. Situação: ${situacao}`
+        );
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>condicionais</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        // Função que pede um número e valida a entrada.
+        // Retorna um Number válido ou null se o usuário cancelar.
+        function getNumber(message) {
+          while (true) {
+            const input = prompt(message);
+            if (input === null) return null; // usuário cancelou
+            const normalized = input.replace(",", ".").trim();
+            const value = Number(normalized);
+            if (!Number.isNaN(value)) return value;
+            alert("Entrada inválida. Por favor, digite um número válido.");
+          }
+        }
+
+        const numero = getNumber("Digite um número:");
+        if (numero === null) return;
+
+        if (numero >= 0) {
+          alert(`O número ${numero} é positivo.`);
+        } else {
+          alert(`O número ${numero} é negativo.`);
+        }
+
+        // agora faça um programa que compare o número é par ou impar:
+        const numero2 = getNumber("Digite outro número:");
+        if (numero2 === null) return;
+
+        const inteiro = Math.trunc(numero2);
+        if (inteiro % 2 === 0) {
+          alert(`O número ${numero2} é par.`);
+        } else {
+          alert(`O número ${numero2} é ímpar.`);
+        }
+        // Ex01. Faça um programa que peça um numero, e mostre se ele é positivo ou negativo (considere 0 como positivo)
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>media</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        // Função que pede um número e valida a entrada.
+        // Retorna um Number válido ou null se o usuário cancelar.
+        function getNumber(message) {
+          while (true) {
+            const input = prompt(message);
+            if (input === null) return null; // usuário cancelou
+            // aceita vírgula como separador decimal
+            const normalized = input.replace(",", ".").trim();
+            const value = Number(normalized);
+            if (!Number.isNaN(value)) return value;
+            alert("Entrada inválida. Por favor, digite um número válido.");
+          }
+        }
+
+        const numero1 = getNumber("Digite o primeiro número:");
+        if (numero1 === null) return; // interrompe se o usuário cancelar
+
+        const numero2 = getNumber("Digite o segundo número:");
+        if (numero2 === null) return;
+
+        const numero3 = getNumber("Digite o terceiro número:");
+        if (numero3 === null) return;
+
+        const media = (numero1 + numero2 + numero3) / 3;
+        alert(
+          `A média dos números ${numero1}, ${numero2} e ${numero3} é ${media}`
+        );
+      })();
+    </script>
+  </body>
+</html>
